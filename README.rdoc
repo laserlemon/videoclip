@@ -1,0 +1,13 @@
+= videoclip
+
+== Installation
+
+  script/plugin install git://github.com/laserlemon/videoclip.git
+
+== Example
+
+Coming soon...
+
+== Tips
+
+Coming soon...
