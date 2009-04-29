@@ -17,6 +17,10 @@ module LaserLemon
           :constructor => :build,
           :converter => :assign,
           :allow_nil => true
+        
+        define_method "#{name}?" do
+          !! send(name)
+        end
       end
     end
   end
