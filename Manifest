@@ -9,4 +9,5 @@ README.rdoc
 tasks/videoclip_tasks.rake
 test/test_helper.rb
 test/videoclip_test.rb
+VERSION.yml
 videoclip.gemspec
