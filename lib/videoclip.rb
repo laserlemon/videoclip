@@ -16,17 +16,9 @@ module LaserLemon
         composed_of name,
           :class_name => 'LaserLemon::Videoclip::Video',
           :mapping => %w(host key url).map{|x| %W(#{name}_#{x} #{x}) },
-          :constructor => :build,
-          :converter => :assign,
+          :constructor => Proc.new{|h,k,u| LaserLemon::Videoclip::Video.build(h, k, u, options) },
+          :converter => Proc.new{|u| LaserLemon::Videoclip::Video.assign(u, options) },
           :allow_nil => true
-        
-        define_method "#{name}_with_options" do
-          v = send("#{name}_without_options")
-          v.options ||= self.class.videoclip_options[name.to_sym]
-          v
-        end
-        
-        alias_method_chain name, :options
         
         define_method "#{name}?" do
           !! send(name)

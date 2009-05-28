@@ -29,16 +29,16 @@ module LaserLemon
           end
         end
         
-        def build(host, key, url)
+        def build(host, key, url, options = {})
           uri = parse_url(url)
           klass = match(uri, host)
-          klass.new(key, url)
+          klass.new(key, url, options)
         end
         
-        def assign(url)
+        def assign(url, options = {})
           uri = parse_url(url)
           klass = match(uri)
-          video = klass.new
+          video = klass.new(nil, nil, options)
           video.assign(uri)
           video
         end
@@ -51,9 +51,9 @@ module LaserLemon
       attr_reader :host, :key, :url
       attr_accessor :options
       
-      def initialize(key = nil, url = nil)
+      def initialize(key = nil, url = nil, options = {})
         @host = self.class.host
-        @key, @url = key, url
+        @key, @url, @options = key, url, options
       end
       
       protected
