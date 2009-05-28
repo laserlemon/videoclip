@@ -1,5 +1,5 @@
 require 'videoclip/video'
-Dir.glob(Rails.root + '/lib/videoclip/*.rb').each{|v| require v }
+Dir.glob(Rails.root + 'lib/videoclip/*.rb').each{|v| require v }
 Dir.glob(File.dirname(__FILE__) + '/videoclip/videos/*.rb').each{|v| require v }
 
 module LaserLemon
