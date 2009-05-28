@@ -1,5 +1,6 @@
 init.rb
 lib/videoclip/video.rb
+lib/videoclip/videos/blip.rb
 lib/videoclip/videos/youtube.rb
 lib/videoclip.rb
 Manifest
