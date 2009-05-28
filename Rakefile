@@ -2,7 +2,7 @@ require 'rubygems'
 require 'rake'
 require 'echoe'
 
-Echoe.new('videoclip', '0.2.1') do |g|
+Echoe.new('videoclip', '0.2.2') do |g|
   g.description = %(Save videos from popular sites alongside your ActiveRecord models)
   g.url = 'http://github.com/laserlemon/videoclip'
   g.author = 'Steve Richert'
