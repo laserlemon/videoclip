@@ -8,7 +8,7 @@ module LaserLemon
       def assign(uri)
         @url = "http://blip.tv#{uri.path}"
         response = Net::HTTP.get(URI.parse(@url + '?skin=api'))
-        @key = parse_response(response, %w(response payload asset embed_lookup))
+        @key = parse_response(response, %w(response payload asset embedLookup))
       end
 
       def embed(style = nil)
