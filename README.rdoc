@@ -10,7 +10,7 @@ In particular, <tt>videoclip</tt> saves three values for each video:
 * A unique key string to identify the video
 * A link back to the original source of the video
 
-In addition, <tt>videoclip</tt> can return the HTML needed to embed the video on your own site by using the source and the key of the video. You can specify styles (much like you can using <tt>paperclip</tt>) to define the size(s) at which you'd like to embed the video.
+In addition, <tt>videoclip</tt> can return the HTML needed to embed the video on your own site by using the host and the key of the video. You can specify styles (much like you can using <tt>paperclip</tt>) to define the size(s) at which you'd like to embed the video.
 
 == Installation
 
@@ -68,7 +68,7 @@ Now attaching videos is a snap...
   => "http://www.youtube.com/watch?v=pv5zWaTEVkI"
   >> p.video.embed
   => "<object width=\"640\" height=\"385\"><param name=\"movie\" value=\"http://www.youtube.com/v/pv5zWaTEVkI&hl=en&fs=1\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"http://www.youtube.com/v/pv5zWaTEVkI&hl=en&fs=1\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"640\" height=\"385\"></embed></object>"
-  >> p.update_attribute(:video => 'http://blip.tv/file/62177')
+  >> p.update_attribute(:video, 'http://blip.tv/file/62177')
   => "http://blip.tv/file/62177"
   >> p.video.host
   => "blip"
@@ -83,7 +83,7 @@ Now attaching videos is a snap...
 
 There are a few things to note in the example above:
 
-1. The input needed to create a video model is simply the URL of the video on its host site. This URL doesn't have to be perfectly formed. A canonical link will be stored.
+1. The input needed to create a video object is simply the URL of the video on its host site. This URL doesn't have to be perfectly formed. A canonical link will be stored.
 2. The format of the embed string is unique to the video host and should closely resemble the embed string recommended by the host.
 3. The actual dimensions used in the embed string may be larger than those specified in the model. This is due to additional controls (or "chrome") surrounding the played back video (note: this can be overridden, see below).
 
@@ -91,11 +91,11 @@ There are a few things to note in the example above:
 
 As seen in the above example, the <tt>embed</tt> method accepts a style argument to determine the output dimensions of the video. The style argument can be in one of three formats: a symbol, string or hash.
 
-1. A symbol references a key in the <tt>:styles</tt> hash of your has_video declaration.
+1. A symbol references a key in the <tt>:styles</tt> hash of your <tt>has_video</tt> declaration.
 2. A string is used as a ImageMagick-ish representation of the geometry to use (see below).
-3. A hash can be used to define the <tt>:width</tt>, <tt>:height</tt> of the embedded video as well as a boolean option, <tt>:include_chrome</tt> (see below).
+3. A hash can be used to define the <tt>:width</tt> and <tt>:height</tt> of the embedded video as well as a boolean option, <tt>:include_chrome</tt> (see below).
 
-The geometry string is a simpler form of a "ImageMagick geometry string"[http://www.imagemagick.org/script/command-line-processing.php#geometry]. For <tt>videoclip</tt> the geometry string follows a simple pattern:
+The geometry string is a simpler form of an {ImageMagick geometry string}[http://www.imagemagick.org/script/command-line-processing.php#geometry]. For <tt>videoclip</tt>, the geometry string follows a simple pattern:
 
   "#{width}x#{height}"
 
@@ -109,13 +109,13 @@ The width dimension can also be excluded. The geometry <tt>x405</tt> would yield
 
 For a hash style declaration, the <tt>:include_chrome</tt> option is equivalent to appending an exclamation point to a geometry string.
 
-As shown in the example, the <tt>embed</tt> method can also accept zero arguments, in which case the specified <tt>:default_style</tt>. If there is only a single style defined, the <tt>:default_style</tt> option can be omitted, or if the default style is named <tt>:default</tt>.
+As shown in the example, the <tt>embed</tt> method can also accept zero arguments, in which case the specified <tt>:default_style</tt> is used. If there is only a single style defined or if the default style is named <tt>:default</tt>, the <tt>:default_style</tt> option can be omitted.
 
 == Contributing
 
-Video sites are often changing the dimensions of their video players or the format of their URLs. Because of this, the <tt>videoclip</tt> classes videos from these hosts will need to be updated as well. When an update is needed, please create a new issue[http://github.com/laserlemon/videoclip/issues] or fork the repository yourself and fix away!
+Video sites are often changing the dimensions of their video players or the format of their URLs. Because of this, the <tt>videoclip</tt> video classes for these hosts will need to be updated as well. When an update is needed, please create a new issue[http://github.com/laserlemon/videoclip/issues] or fork the repository yourself and fix away!
 
-I'm always open to outside contribution and as long as your work is in line with the purpose of the project, I'll more than likely include it, so feel free! Or if you're not comfortable hacking away at the code, please send me your feedback.
+I'm always open to outside contribution and as long as your work is in line with the direction of the project, I'll more than likely include it, so feel free! Or if you're not comfortable hacking away at the code, please send me your feedback.
 
 == TODO
 
