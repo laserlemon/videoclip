@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{videoclip}
-  s.version = "0.2.7"
+  s.version = "0.2.8"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["laserlemon"]
@@ -31,6 +31,8 @@ Gem::Specification.new do |s|
      "lib/videoclip/videos/funny_or_die.rb",
      "lib/videoclip/videos/live_leak.rb",
      "lib/videoclip/videos/metacafe.rb",
+     "lib/videoclip/videos/twit_vid.rb",
+     "lib/videoclip/videos/vidly.rb",
      "lib/videoclip/videos/youtube.rb",
      "test/test_helper.rb",
      "test/videoclip_test.rb",
