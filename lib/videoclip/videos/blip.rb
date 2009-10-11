@@ -2,7 +2,7 @@ module LaserLemon
   module Videoclip
     class Video::Blip < Video
       def self.match?(uri)
-        (uri.host =~ /^(?:www\.)?blip\.tv$/i) && (uri.path =~ /^\/file\/\d+$/)
+        (uri.host =~ /^(?:www\.)?blip\.tv$/i) && (uri.path =~ /^\/file\/\d+/)
       end
 
       def assign(uri)
