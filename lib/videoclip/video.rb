@@ -51,6 +51,8 @@ module LaserLemon
       attr_reader :host, :key, :url
       attr_accessor :options
 
+      alias_method :to_s, :url
+
       def initialize(key = nil, url = nil, options = {})
         @host = self.class.host
         @key, @url, @options = key, url, options

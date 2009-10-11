@@ -122,4 +122,3 @@ I'm always open to outside contribution and as long as your work is in line with
 * Tests!
 * More video hosts
 * Convince Hulu to open a public API
-* Better support for forms
