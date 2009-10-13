@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{videoclip}
-  s.version = "0.2.9"
+  s.version = "0.2.10"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["laserlemon"]
-  s.date = %q{2009-10-11}
+  s.date = %q{2009-10-13}
   s.description = %q{Save videos from popular sites alongside your ActiveRecord models}
   s.email = %q{steve@laserlemon.com}
   s.extra_rdoc_files = [
@@ -34,6 +34,7 @@ Gem::Specification.new do |s|
      "lib/videoclip/videos/twit_vid.rb",
      "lib/videoclip/videos/vidly.rb",
      "lib/videoclip/videos/vimeo.rb",
+     "lib/videoclip/videos/yahoo.rb",
      "lib/videoclip/videos/youtube.rb",
      "test/test_helper.rb",
      "test/videoclip_test.rb",
