@@ -16,7 +16,7 @@ module LaserLemon
 
       protected
         def chrome_height
-          30
+          31
         end
     end
   end
