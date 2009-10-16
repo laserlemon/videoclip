@@ -9,19 +9,27 @@ module LaserLemon
     end
 
     module ClassMethods
-      def has_video(name = :video, options = {})
+      def has_video(*names)
+        options = names.extract_options!.symbolize_keys
+        names.collect!(&:to_sym)
+        names << :video if names.empty?
+
         class_inheritable_hash :videoclip_options
-        self.videoclip_options = {name.to_sym => options}
+        self.videoclip_options ||= {}
 
-        composed_of name,
-          :class_name => 'LaserLemon::Videoclip::Video',
-          :mapping => %w(host key url).map{|x| %W(#{name}_#{x} #{x}) },
-          :constructor => Proc.new{|h,k,u| LaserLemon::Videoclip::Video.build(h, k, u, options) },
-          :converter => Proc.new{|u| LaserLemon::Videoclip::Video.assign(u, options) },
-          :allow_nil => true
+        names.each do |name|
+          self.videoclip_options.update(name => options)
 
-        define_method "#{name}?" do
-          !! send(name)
+          composed_of name,
+            :class_name => 'LaserLemon::Videoclip::Video',
+            :mapping => %w(host key url).map{|x| %W(#{name}_#{x} #{x}) },
+            :constructor => Proc.new{|h,k,u| LaserLemon::Videoclip::Video.build(h, k, u, options) },
+            :converter => Proc.new{|u| LaserLemon::Videoclip::Video.assign(u, options) },
+            :allow_nil => true
+
+          define_method "#{name}?" do
+            !! send(name)
+          end
         end
       end
     end
