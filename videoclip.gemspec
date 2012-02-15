@@ -10,6 +10,8 @@ Gem::Specification.new do |gem|
   gem.summary     = "Save videos from popular sites alongside your ActiveRecord models"
   gem.homepage    = "https://github.com/laserlemon/videoclip"
 
+  gem.add_development_dependency "rspec", "~> 2.8"
+
   gem.files         = `git ls-files`.split("\n")
   gem.test_files    = `git ls-files -- spec/*`.split("\n")
   gem.require_paths = ["lib"]
