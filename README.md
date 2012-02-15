@@ -1,4 +1,4 @@
-Videoclip
+Videoclip [![Build Status](https://secure.travis-ci.org/laserlemon/videoclip.png)](http://travis-ci.org/laserlemon/videoclip) [![Dependency Status](https://gemnasium.com/laserlemon/videoclip.png)](https://gemnasium.com/laserlemon/videoclip)
 =========
 
 Easily attach videos to your ActiveRecord models from all sorts of popular sites!
