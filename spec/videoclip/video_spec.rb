@@ -31,6 +31,11 @@ describe Videoclip::Video do
       uri.to_s.should == url
     end
 
+    it "normalizes valid URLs" do
+      uri = Videoclip::Video.parse("HTTP://WWW.YOUTUBE.COM/watch?v=qybUFnY7Y8w")
+      uri.to_s.should == "http://www.youtube.com/watch?v=qybUFnY7Y8w"
+    end
+
     it "bombs on invalid URLs" do
       url = "youtube.com/watch?v=qybUFnY7Y8w"
       expect{ Videoclip::Video.parse(url) }.to raise_error(Videoclip::InvalidUrl)
