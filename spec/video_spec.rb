@@ -23,5 +23,10 @@ describe Videoclip::Video do
       uri.should be_a(URI::HTTPS)
       uri.to_s.should == url
     end
+
+    it "bombs on bad URLs" do
+      url = "youtube.com/watch?v=qybUFnY7Y8w"
+      expect{ Videoclip::Video.parse(url) }.to raise_error(Videoclip::InvalidUrl)
+    end
   end
 end

@@ -10,12 +10,17 @@ module Videoclip
 
     def self.parse(url)
       uri = URI.parse(url)
+      raise unless uri.is_a?(URI::HTTP)
       uri.normalize!
       uri
+    rescue
+      raise InvalidUrl
     end
 
     def self.match(uri)
-      implementations.detect{|i| i.matches?(uri) }
+      implementations.detect{|i| i.matches?(uri) } || raise
+    rescue
+      raise UnrecognizedUrl
     end
 
     def self.construct(value)

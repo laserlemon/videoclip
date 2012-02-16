@@ -1,4 +1,5 @@
 require "uri"
+require "videoclip/error"
 require "videoclip/video"
 
 module Videoclip
