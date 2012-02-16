@@ -7,6 +7,13 @@ describe Videoclip::Video do
       class CustomVideo < Videoclip::Video; end
       Videoclip::Video.implementations.should == [CustomVideo]
     end
+
+    it "puts the most recently inherited video class first" do
+      Videoclip::Video.implementations.should == []
+      class GoodVideo   < Videoclip::Video; end
+      class BetterVideo < Videoclip::Video; end
+      Videoclip::Video.implementations.should == [BetterVideo, GoodVideo]
+    end
   end
 
   context ".parse" do

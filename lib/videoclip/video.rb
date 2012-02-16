@@ -5,7 +5,7 @@ module Videoclip
     end
 
     def self.inherited(klass)
-      implementations << klass
+      implementations.unshift(klass)
     end
 
     def self.parse(url)
