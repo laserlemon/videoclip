@@ -1,39 +1,18 @@
-require 'videoclip/video'
-Dir.glob(Rails.root + 'lib/videoclip/*.rb').each{|v| require v }
-Dir.glob(File.dirname(__FILE__) + '/videoclip/videos/*.rb').each{|v| require v }
+require "videoclip/video"
 
-module LaserLemon
-  module Videoclip
-    def self.included(base)
-      base.extend ClassMethods
-    end
+module Videoclip
+  def has_video(*names)
+    names << :video if names.empty?
 
-    module ClassMethods
-      def has_video(*names)
-        options = names.extract_options!.symbolize_keys
-        names.collect!(&:to_sym)
-        names << :video if names.empty?
-
-        class_inheritable_hash :videoclip_options
-        self.videoclip_options ||= {}
-
-        names.each do |name|
-          self.videoclip_options.update(name => options)
-
-          composed_of name,
-            :class_name => 'LaserLemon::Videoclip::Video',
-            :mapping => %w(host key url).map{|x| %W(#{name}_#{x} #{x}) },
-            :constructor => Proc.new{|h,k,u| LaserLemon::Videoclip::Video.build(h, k, u, options) },
-            :converter => Proc.new{|u| LaserLemon::Videoclip::Video.assign(u, options) },
-            :allow_nil => true
-
-          define_method "#{name}?" do
-            !! send(name)
-          end
-        end
-      end
+    names.each do |name|
+      composed_of name,
+        :class_name  => "Videoclip::Video",
+        :mapping     => [name, :destruct],
+        :allow_nil   => true,
+        :constructor => :construct,
+        :converter   => :convert
     end
   end
 end
 
-ActiveRecord::Base.send(:include, LaserLemon::Videoclip)
+ActiveRecord::Base.extend Videoclip
