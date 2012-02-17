@@ -12,6 +12,7 @@ module Videoclip
       uri = URI.parse(url)
       raise unless uri.is_a?(URI::HTTP)
       uri.normalize!
+      uri.scheme = uri.scheme.downcase
       uri
     rescue
       raise InvalidUrl
