@@ -77,42 +77,4 @@ describe Videoclip::Video do
       expect{ match }.to raise_error(Videoclip::UnrecognizedUrl)
     end
   end
-
-  context "[other]" do
-    it 'should have a class-level match? method' do
-      # Video.should respond_to(:match?)
-      # Video.match?("http://vimeo.com/9679622").should be_false
-      # Video::Vimeo.should respond_to(:match?)
-      # Video::Vimeo.match?("http://vimeo.com/9679622").should be_true
-    end
-
-    it 'should have a host attribute which is a kind of Video::Host' do
-      # host = Video.new("http://vimeo.com/9679622").host
-      # host.should be_kind_of(Video::Host)
-      # host.should be_an_instance_of(Video::Host::Vimeo)
-    end
-
-    it 'should have a key attribute' do
-      # Video.new("http://vimeo.com/9679622").key.should eq('9679622')
-    end
-
-    it 'should have a url attribute' do
-      # Video.new("http://www.youtube.com/watch?v=pv5zWaTEVkI&feature=related").url.should eq('http://www.youtube.com/watch?v=pv5zWaTEVkI')
-    end
-
-    it 'should provide a way to embed the video' do
-      # Video.new("foobar").should respond_to(:embed)
-      # Video.new("foobar").embed.should be_nil
-      # Video::Vimeo.new("http://vimeo.com/9679622").should respond_to(:embed)
-      # Video.new("http://vimeo.com/9679622").embed.should eq(load_html_for_example(:vimeo_embed))
-    end
-
-    it 'should implement to_s' do
-      # Video.new("http://vimeo.com/9679622").to_s.should eq('http://vimeo.com/9679622')
-    end
-
-    it 'should implement inspect' do
-      # Video.new("http://vimeo.com/9679622").inspect.should eq(%(#<Video::Vimeo host: #{Video::Host::Vimeo.new.inspect}, key: "9679622", url: "http://vimeo.com/9679622", embed: #{(load_html_for_example(:vimeo_embed)[0..80] + '...').inspect}>))
-    end
-  end
 end

@@ -21,7 +21,7 @@ describe 'hooking into ActiveRecord' do
     # obj = Model.create(:video => "http://www.youtube.com/watch?v=pv5zWaTEVkI&feature=related")
     # obj.video.should be_an_instance_of(Videoclip::Video)
     # obj.video.host.should eq('YouTube')
-    # obj.video.key.should eq('pv5zWaTEVkI')
+    # obj.video.id.should eq('pv5zWaTEVkI')
   end
 
   it 'should have a user-defined name for the video attribute' do
@@ -30,6 +30,6 @@ describe 'hooking into ActiveRecord' do
     # obj = Model.create(:awesomeness => "http://vimeo.com/9679622")
     # obj.awesomeness.should be_an_instance_of(Videoclip::Video)
     # obj.awesomeness.host.should eq('Vimeo')
-    # obj.awesomeness.key.should eq('9679622')
+    # obj.awesomeness.id.should eq('9679622')
   end
 end
