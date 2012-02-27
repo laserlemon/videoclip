@@ -11,7 +11,7 @@ describe 'hooking into ActiveRecord' do
       def self.matches?(*); true end
     end
     obj = User.create(:video => "http://vimeo.com/24933302")
-    obj.read_attribute(:video).should eq("http://vimeo.com/24933302")
+    obj.read_attribute(:video).should eq("http://vimeo.com 24933302")
   end
 
   it 'should provide an option to specify what the actual column is named' do

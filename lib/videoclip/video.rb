@@ -43,6 +43,11 @@ module Videoclip
       @url, @id = url, id
     end
 
+    def load(uri)
+      @id, @url = uri.to_s.reverse.split('/', 2).map(&:reverse)
+      self
+    end
+
     def destruct
       "#{url} #{id}"
     end
