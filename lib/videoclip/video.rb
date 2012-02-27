@@ -40,7 +40,7 @@ module Videoclip
     attr_reader :url, :id
 
     def initialize(url = nil, id = nil)
-      @url, @id = uri, id
+      @url, @id = url, id
     end
 
     def destruct
