@@ -6,10 +6,11 @@ describe 'hooking into ActiveRecord' do
   end
 
   it 'should only need to store the canonical URL' do
-    User.has_video :video
     class VimeoVideo < Videoclip::Video
       def self.matches?(*); true end
+      def load(uri) @id, @url = uri.to_s.reverse.split('/', 2).map(&:reverse); self end
     end
+    User.has_video :video
     obj = User.create(:video => "http://vimeo.com/24933302")
     obj.read_attribute(:video).should eq("http://vimeo.com 24933302")
   end

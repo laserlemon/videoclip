@@ -7,4 +7,7 @@ module Videoclip
 
   class UnrecognizedUrl < Error
   end
+
+  class NotImplemented < Error
+  end
 end
